@@ -1,0 +1,109 @@
+from task.models import Todos
+
+ModelName.ojects.create(field_name=value)
+
+Todos.objects.create(title="water bill",user="hari")
+
+
+=====fetch all records====
+
+select * from Todos
+
+queryset
+
+qs=ModelName.objects.all()
+qs=Todos.objects.all()
+==========================================================================
+3)orm query for filter records
+
+fetch all todos inserted by hari
+
+qs=Todos.objects.filter(user="hari")
+qs
+
+
+fetch all pending todos inserted by user yasar
+qs=Todos.objects.filter(user="yasar",status=False)
+qs
+
+fetch todo with id=1
+qs=Todos.objects.filter(id=1)
+qs
+
+
+qs=Todos.objects.get(id=100)
+qs
+
+
+orm query for updating a record
+ModelName.objects.filter(id=1).update(status=True)
+
+fetch all records whose id in range of (2,5)
+qs=Todos.objects.filter(id__gte=2,id__lte=5)
+qs
+
+qs=Todos.objects.filter(user__in=["hari","abhi"])
+qs=Todos.objects.filter(title__in=["water bill","hardware bill"])
+
+================================================*********************************************======================================
+from task.models import Books
+
+Books.objects.create(name="little women",author="louisa may",price=250,publisher="peter")
+Books.objects.create(name="beloved",author="pulitzer prize",price=450,publisher="mary")
+Books.objects.create(name="lolita",author="vlsdimir nabokov's",price=500,publisher="jane")
+Books.objects.create(name="emma",author="jane austen",price=650,publisher="marycom")
+Books.objects.create(name="moby dick",author="herman melville",price=120,publisher="jacob")
+Books.objects.create(name="A passage to india",author="E M forester",price=355,publisher="hellen")
+Books.objects.create(name="Things fall apart",author="chinua achebe",price=200,publisher="hellen")
+
+
+===================fetch all records======================================
+qs=Books.objects.all()
+=============================================================================
+orm query for filter records
+
+fetch all Books inserted by publisher peter
+
+qs=Books.objects.filter(publisher="peter")
+qs
+
+qs=Books.objects.filter(publisher="hellen")
+qs
+
+qs=Books.objects.filter(id=1)
+qs
+
+
+orm query for updating a record
+Books.objects.filter(id=1).update(price=1050)
+
+
+fetch all records whose id in range of (2,6)
+qs=Books.objects.filter(id__gte=2,id__lte=5)
+qs
+
+
+qs=Books.objects.filter(price__in=[500,120])
+===============================================================
+
+Todos.objects.filter(id=1).delete()
+
+orm query for listing a specific column
+qs=ModelName.objects.all().values("id")
+
+qs=Books.objects.all().values("name")
+
+qs=Todos.objects.all().exclude(user="aruna")
+
+
+
+
+
+
+
+
+
+
+
+
+
